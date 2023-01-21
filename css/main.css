@@ -1,0 +1,230 @@
+:root {
+   --lightish-gray: #bababa;
+   --darkish-gray: #8d8d8d;
+   --lightish-blue: #a6cbeb;
+   --darkish-blue: #4c96d7;
+   --kinda-black: #3a3a3a;
+}
+
+html {
+   margin: 0;
+   font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+   background-color: #fff;
+   margin: 2px;
+}
+
+main {
+   background-color: #fff;
+   padding: 2px;
+}
+
+main h1 {
+   font-size: 1em;
+}
+
+header {
+   background-color: #fff;
+   display: grid;
+   grid-template-rows: 66% 34%;
+   align-items: center;
+}
+
+header a {
+   text-decoration: none;
+   color: var(--kinda-black);
+}
+
+nav {
+   background-color: var(--kinda-black);
+   color: white;
+   grid-column: 1 / 3;
+   grid-row: 2 / 3;
+}
+
+nav a {
+   color: #fff;
+   text-decoration: none;
+}
+
+nav ul {
+   list-style-type: none;
+   display: flex;
+   padding: 0;
+   margin-left: 2%;
+}
+
+nav li {
+   padding: 0 5px;
+}
+
+nav a:hover {
+   background-color: var(--darkish-blue);
+}
+
+.vehicle {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 1fr .5fr .5fr;
+}
+
+.vehicle-display {
+   display: grid;
+   grid-template-columns: 1fr 2fr 1fr;
+   grid-template-rows: 25% 25% 25% 25%;
+}
+
+.vehicle-display h2 {
+   font-size: 1em;
+   padding: 0;
+   margin: 0;
+}
+
+.vehicle-display img {
+   width: 100%;
+   grid-column: 1 / 4;
+   grid-row: 1 / 3;
+}
+
+.vehicle-summary {
+   grid-column: 1 / 3;
+   grid-row: 1 / 2;
+   z-index: 999;
+   text-align: left;
+}
+
+.vehicle-summary ul {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   font-size: small;
+}
+
+.vehicle-display button {
+   background-color: var(--darkish-blue);
+   font-size: 1.5em;
+   grid-column: 2 / 3;
+   grid-row: 4 / 5;
+   height: 75%;
+}
+
+.upgrades {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 1fr 2fr 2fr;
+}
+
+.upgrades h3 {
+   grid-column: 1 / span 2;
+}
+
+.upgrades div {
+   justify-content: center;
+   /* background-color: var(--darkish-blue); */
+}
+
+.upgrade-image {
+   background-color: var(--darkish-blue);
+   height: 70%;
+   margin: 3px;
+   border: 1px var(--kinda-black) solid;
+}
+
+.upgrades img {
+   display: block;
+   background-color: var(--darkish-blue);
+   margin: auto;
+}
+
+.upgrades p {
+   margin: 0;
+   text-align: center;
+}
+
+.reviews {
+   grid-row: 2 / 3;
+}
+
+footer {
+   text-align: center;
+   border-top: 2px var(--kinda-black) solid;
+}
+
+footer p {
+   margin: 0;
+}
+
+footer p:nth-child(n + 3) {
+   display: none;
+}
+
+@media screen and (min-width: 600px) {
+   html {
+      background-image: url('../images/site/checkerboard.jpg');
+      margin: 0;
+   }
+
+   body {
+      background-color: #fff;
+      margin: 1% 5% 0 5%;
+   }
+
+   header div {
+      justify-self: end;
+      margin: 0 5% 0;
+   }
+
+   footer p:nth-child(n + 3) {
+      display: block;
+   }
+
+   main h1 {
+      font-size: 1.5em;
+   }
+
+   .vehicle {
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: 1fr .5fr;
+      margin: 2%;
+      grid-column-gap: 2%;
+   }
+
+   .vehicle-display {
+      grid-column: 1 / 9;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+   }
+
+   .vehicle-display button {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      height: 50%;
+      align-self: end;
+   }
+
+   .vehicle-display img {
+      grid-column: 1 / 9;
+      grid-row: 1 / 7;
+   }
+
+   .vehicle-summary {
+      font-size: 1.5em;
+      color: var(--darkish-blue);
+   }
+
+   .vehicle-summary ul {
+      font-size: 1em;
+   }
+
+   .upgrades {
+      grid-column: 1 / 5;
+      font-size: 1.5em;
+   }
+
+   .reviews {
+      grid-column: 5 / 9;
+      font-size: 1.5em;
+   }
+}
