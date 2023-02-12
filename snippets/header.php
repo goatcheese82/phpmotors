@@ -1,7 +1,7 @@
-<?php $url = array("login" => "login", "register" => "register")
+<?php $url = array("login" => "login", "signup" => "signup")
 ?>
 <header>
-   <img src="http://localhost/phpmotors/images/site/logo.png" alt="PHP Motors Logo" />
+   <img src="/phpmotors/images/site/logo.png" alt="PHP Motors Logo" />
    <div>
       <?php
        echo "<a href='/phpmotors/accounts/index.php?action=" . urlencode($url['login']) . "' title='Login'>My Account</a>";

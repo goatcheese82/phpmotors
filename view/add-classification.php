@@ -6,11 +6,10 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" type="text/css" href="../css/main.css" />
-   <link rel="stylesheet" type="text/css" href="../css/login.css" />
+   <link rel="stylesheet" type="text/css" href="../css/form.css" />
    <title>PHP Motors</title>
    <?php
-   $title = "Login";
-   $url = array("login" => "login", "signup" => "signup");
+   $title = "Vehicle Management";
    ?>
 </head>
 
@@ -23,14 +22,11 @@
          echo $message;
       }
       ?>
-      <form action="welcome.php" method="post">
-         E-mail: <input type="text" name="clientEmail" id="clientEmail"><br>
-         Password: <input type="text" name="clientPassword" id="clientPassword"><br>
-         <input type="submit">
+      <form action="/phpmotors/vehicles/index.php" method="post">
+         Classification Name: <input type="text" name="classificationName" id="classificationName"><br>
+         <input type="submit" name="submit" id="classbtn" value="Add Classification">
+         <input type="hidden" name="action" value="createClassification">
       </form>
-      <?php
-      echo "<a href='/phpmotors/accounts/index.php?action=" . urlencode(($url)['signup']) . "' title='Create a new account'>Don't have an account</a>";
-      ?>
    </main>
    <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
 </body>

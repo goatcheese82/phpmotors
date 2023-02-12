@@ -23,6 +23,7 @@ main {
 
 main h1 {
    font-size: 1em;
+   margin: 1% 1% 1% 2%;
 }
 
 header {
@@ -182,6 +183,7 @@ footer p:nth-child(n + 3) {
 
    main h1 {
       font-size: 1.5em;
+      margin: 20px;
    }
 
    .vehicle {
@@ -226,5 +228,10 @@ footer p:nth-child(n + 3) {
    .reviews {
       grid-column: 5 / 9;
       font-size: 1.5em;
+   }
+
+   .link-container {
+      padding: 20px;
+      background-color: black;
    }
 }

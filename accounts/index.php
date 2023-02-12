@@ -4,6 +4,7 @@
 
 require_once '../library/connections.php';
 require_once '../model/main-model.php';
+require_once '../model/accounts-model.php';
 // require_once 'view/home.php';
 
 // Get the array of classifications
@@ -26,11 +27,37 @@ if ($action == NULL) {
 
 
 switch ($action) {
-   case 'register':
+   case 'signup':
       include '../view/register.php';
       break;
+   case 'register':
+      $clientFirstname = filter_input(INPUT_POST, 'clientFirstname');
+      $clientLastname = filter_input(INPUT_POST, 'clientLastname');
+      $clientEmail = filter_input(INPUT_POST, 'clientEmail');
+      $clientPassword = filter_input(INPUT_POST, 'clientPassword');
 
+
+      if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($clientPassword)) {
+         $message = '<p>Please provide information for all empty form fields.</p>';
+         include '../view/register.php';
+         exit;
+      }
+
+      $res = regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassword);
+
+      if ($res === 1) {
+         $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
+         include '../view/login.php';
+         exit;
+      } else {
+         $message = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
+         include '../view/registration.php';
+         exit;
+      }
+      break;
    default:
       include '../view/login.php';
       break;
 }
+
+?>
