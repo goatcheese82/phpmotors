@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<?php
+// Build the select list
+$classificationList = '<select name="classificationId" id="classificationId">';
+foreach ($classifications as $classification) {
+   $classificationList .= "<option value='$classification[classificationId]' name='$classification[classificationId]'";
+   if(isset($classificationId)){
+      if($classification['classificationId'] == $classificationId){
+         $classificationList .= ' selected ';
+      }
+   }
+
+   $classificationList .= ">$classification[classificationName]</option>";
+
+}
+$classificationList .= "</select>";
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>

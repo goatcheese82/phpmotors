@@ -24,7 +24,7 @@
       }
       ?>
       <form action="welcome.php" method="post">
-         E-mail: <input type="text" name="clientEmail" id="clientEmail"><br>
+         E-mail: <input type="email" name="clientEmail" id="clientEmail" required="true"><br>
          Password: <input type="text" name="clientPassword" id="clientPassword"><br>
          <input type="submit">
       </form>

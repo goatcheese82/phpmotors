@@ -5,6 +5,7 @@
 require_once '../library/connections.php';
 require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
+require_once '../library/functions.php';
 // require_once 'view/home.php';
 
 // Get the array of classifications
@@ -31,19 +32,24 @@ switch ($action) {
       include '../view/register.php';
       break;
    case 'register':
-      $clientFirstname = filter_input(INPUT_POST, 'clientFirstname');
-      $clientLastname = filter_input(INPUT_POST, 'clientLastname');
-      $clientEmail = filter_input(INPUT_POST, 'clientEmail');
-      $clientPassword = filter_input(INPUT_POST, 'clientPassword');
+      $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+      $clientLastname = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+      $clientEmail = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+      $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+
+      $clientEmail = checkEmail($clientEmail);
+      $checkPassword = checkPassword($clientPassword);
 
 
-      if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($clientPassword)) {
+      if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)) {
          $message = '<p>Please provide information for all empty form fields.</p>';
          include '../view/register.php';
          exit;
       }
 
-      $res = regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassword);
+
+      $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+      $res = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);
 
       if ($res === 1) {
          $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
