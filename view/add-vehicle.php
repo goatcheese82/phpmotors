@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION['loggedin'])) {
+   header('Location: /phpmotors/');
+}
 // Build the select list
 $classificationList = '<select name="classificationId" id="classificationId">';
 foreach ($classifications as $classification) {

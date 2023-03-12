@@ -1,3 +1,8 @@
+<?php
+if (!isset($_SESSION['loggedin'])) {
+   header('Location: /phpmotors/');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

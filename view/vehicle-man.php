@@ -1,3 +1,8 @@
+<?php
+if (!isset($_SESSION['loggedin']) || $_SESSION['clientData']['clientLevel'] == 1) {
+   header('Location: /phpmotors/');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,10 +21,10 @@
    <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/header.php'; ?>
    <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/title.php'; ?>
    <div class="link-container">
-   <?php
-   echo "<a href='/phpmotors/vehicles/index.php?action=addClassification" . "' title='Add a Classification'>Add Classification</a><br>";
-   echo "<a href='/phpmotors/vehicles/index.php?action=addVehicle" . "' title='Add Vehicle'>Add Vehicle</a>";
-   ?>
+      <?php
+      echo "<a href='/phpmotors/vehicles/index.php?action=addClassification" . "' title='Add a Classification'>Add Classification</a><br>";
+      echo "<a href='/phpmotors/vehicles/index.php?action=addVehicle" . "' title='Add Vehicle'>Add Vehicle</a>";
+      ?>
    </div>
    <?php require $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/snippets/footer.php'; ?>
 </body>

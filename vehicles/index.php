@@ -6,27 +6,13 @@ require_once '../model/main-model.php';
 require_once '../model/vehicle-model.php';
 require_once '../library/functions.php';
 // require_once 'view/home.php';
+session_start();
 
 // Get the array of classifications
-$classifications = getClassifications();
-// var_dump($classifications);
-// exit;
+// $classifications = getClassifications();
 
-// Build a navigation bar using the $classifications array
-$navList = '<ul>';
-$navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
-foreach ($classifications as $classification) {
- $navList .= "<li><a href='/phpmotors/index.php?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
-}
-$navList .= '</ul>';
+$navList = buildNav($classifications);
 
-// // Build the select list
-// $classificationList = '<select name="classificationId" id="classificationId">';
-// foreach ($classifications as $classification) {
-//    $classificationList .= "<option value='$classification[classificationId]' name='$classification[classificationId]'>$classification[classificationName]</option>";
-
-// }
-// $classificationList .= "</select>";
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -69,7 +55,7 @@ switch ($action) {
       $invStock = trim(filter_input(INPUT_POST, 'invStock', FILTER_SANITIZE_NUMBER_INT));
       $invColor = trim(filter_input(INPUT_POST, 'invColor', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
 
-      if (empty($classificationId) || empty($invMake)/opt/lampp/htdocs/phpmotors/accounts || empty($invModel) || empty($invDescription) || empty($invImage) || empty($invThumbnail) || empty($invPrice) || empty($invStock) || empty($invColor)) {
+      if (empty($classificationId) || empty($invMake) || empty($invModel) || empty($invDescription) || empty($invImage) || empty($invThumbnail) || empty($invPrice) || empty($invStock) || empty($invColor)) {
          $message = '<p>Please provide information for all empty form fields.</p>';
          include '../view/add-vehicle.php';
          exit;
